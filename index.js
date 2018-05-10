@@ -9,8 +9,8 @@ const tz = (d, separator) => {
     const tzOffset = FORMATS.Z(d);
     const tzOffsetAbs = Math.abs(tzOffset);
     const sign = (tzOffset >= 0) ? "+" : "-";
-    const hours = padZero(Math.floor(tzOffsetAbs / 3600));
-    const minutes = padZero(Math.floor(tzOffsetAbs % 3600 / 60));
+    const hours = zeropad(Math.floor(tzOffsetAbs / 3600));
+    const minutes = zeropad(Math.floor(tzOffsetAbs % 3600 / 60));
     return `${sign}${hours}${separator}${minutes}`;
 };
 /**
