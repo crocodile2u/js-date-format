@@ -53,7 +53,12 @@ const FORMATS = {
     w: d => d.getDay() - 1,
     z: d => {// number of day within the year, starting from 0
         const year = FORMATS.L(d) ? LEAP_YEAR : YEAR;
-        return year.slice(0, d.getMonth()).reduce((a, b) => a + b) + d.getDate() - 1;
+        const month = d.getMonth();
+        if (month > 0) {
+            return year.slice(0, d.getMonth()).reduce((a, b) => a + b) + d.getDate() - 1;
+        } else {
+            return d.getDate() - 1;
+        }
     },
     L: d => {// leap year?
         const Y = d.getFullYear();
